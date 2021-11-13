@@ -67,7 +67,6 @@ plotly==4.5.0
 prometheus-client==0.7.1
 prompt-toolkit==3.0.3
 pycparser==2.20
-pygame==1.9.6
 Pygments==2.5.2
 pyodbc==4.0.30
 pyparsing==2.4.6
