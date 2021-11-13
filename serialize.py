@@ -12,8 +12,8 @@ def serialize_person(person):
 def serialize_place(place):
     return {
         'name': place['name'],
-        'x': random.random() * 2.0,
-        'y': random.random() * 2.0
+        'x': random.uniform(-1, 1) * 180.0,
+        'y': random.uniform(-1, 1) * 180.0
     }
 
 
