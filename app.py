@@ -306,6 +306,24 @@ class DataCleaning(Resource):
         return {}, 204
 
 
+class PersonCreate(Resource):
+    def post(self):
+        data = request.args
+        tax = data.get('taxCode')
+        name = data.get('name')
+        surname = data.get('surname')
+
+        def create_person(tx, tax_in, name_in, surname_in):
+            return tx.run("""CREATE (person: Person {taxCode: $tax, name: $name, surname: $surname}
+                            RETURN person
+            """, {"tax": tax_in, "name": name_in, "surname": surname_in}).single()
+
+        db = get_db()
+        results =  db.write_transaction(create_person, tax, name, surname)
+        user = results['person']
+        return serialize_person(user), 201
+
+
 api.add_resource(PlaceAmountPeop, '/api/v0/PlaceAmountPeop/')
 api.add_resource(PlaceQuarPeop, '/api/v0/PlaceQuarPeop/<string:place_name>')  # Restaurant Alfredo
 api.add_resource(DailyInfected, '/api/v0/DailyInfected/')
@@ -315,3 +333,4 @@ api.add_resource(MostVisited, '/api/v0/MostVisited/')
 api.add_resource(SetPositive, '/api/v0/SetPositive')
 api.add_resource(SetGreen, '/api/v0/SetGreen')
 api.add_resource(DataCleaning, '/api/v0/clean/')
+api.add_resource(PersonCreate, '/api/v0/PersonCreate/')
