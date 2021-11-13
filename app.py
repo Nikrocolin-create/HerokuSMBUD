@@ -176,10 +176,9 @@ class DailyInfected(Resource):
 
         for record in result:
             vaccines = []
-            for vac in record['type_of_vaccines']:
+            for vac in record['type_of_vaccine']:
                 vaccines.append({"name": vac})
-            list_values.append({'count': record['count'], 'vaccines': vaccines]})
-
+            list_values.append({'count': record['count'], 'vaccines': vaccines})
         return {
             'values': list_values
         }
