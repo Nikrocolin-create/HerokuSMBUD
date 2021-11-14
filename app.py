@@ -197,12 +197,14 @@ class InfectedHealed(Resource):
 
         db = get_db()
         result = db.read_transaction(get_healed)
-        return {
-            'infected': result[0][0],
-            'healthy': result[0][1],
-            'ratio': result[0][2]
-        }
-
+        if result != []:
+            return {
+                'infected': result[0][0],
+                'healthy': result[0][1],
+                'ratio': result[0][2]
+            }
+        else:
+            return result
 
 
 # Q5
@@ -220,11 +222,14 @@ class GetDailyStamp(Resource):
             '''))
         db = get_db()
         result = db.read_transaction(get_daily_stamp)
-        return {
-            'infected': result[0][0],
-            'tested': result[0][1],
-            'ratio': result[0][2]
-        }
+        if result != []:
+            return {
+                'infected': result[0][0],
+                'tested': result[0][1],
+                'ratio': result[0][2]
+            }
+        else:
+            return result
 
 
 
