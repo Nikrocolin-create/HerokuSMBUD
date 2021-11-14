@@ -133,7 +133,7 @@ class PlaceQuarPeop(Resource):
         db = get_db()
         result = db.read_transaction(get_place_quar, place_name)
 
-        return [serialize_person(record['person']) for record in result]
+        return {"persons": [serialize_person(record['person']) for record in result]}
 
 
 # Q2
