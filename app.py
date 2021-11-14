@@ -204,7 +204,11 @@ class InfectedHealed(Resource):
                 'ratio': result[0][2]
             }
         else:
-            return result
+            return {
+                'infected': 0,
+                'healthy': 0,
+                'ratio': 0
+            }
 
 
 # Q5
@@ -229,7 +233,11 @@ class GetDailyStamp(Resource):
                 'ratio': result[0][2]
             }
         else:
-            return result
+            return {
+                'infected': 0,
+                'tested': 0,
+                'ratio': 0
+            }
 
 
 
