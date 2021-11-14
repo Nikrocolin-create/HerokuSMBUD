@@ -237,7 +237,7 @@ class MostVisited(Resource):
             return {
                 'date': str(record['date']),
                 'count': record['number'],
-                'place_name': record['place'],
+                'placeName': record['place'],
                 'persons': [serialize_person(person) for person in record['persons']]
             }
         return {'message': 'not found'}, 404
